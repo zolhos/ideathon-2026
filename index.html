@@ -130,7 +130,13 @@
 <div class="flex-1 bg-surface-container-low border-b border-outline-variant/30 flex flex-col rotate-180 p-gutter transition-all duration-500 overflow-hidden relative" id="participant-a">
 <div class="flex justify-between items-start mb-8">
 <div class="flex flex-col gap-1">
-<span class="font-label-caps text-label-caps text-primary">IDIOMA ATIVO: MANDARIM (ZH-CN)</span>
+<label for="lang-select-a" class="font-label-caps text-label-caps text-primary uppercase select-none">IDIOMA ATIVO</label>
+<select id="lang-select-a" class="bg-transparent border-0 text-on-surface font-semibold p-0 pr-8 focus:ring-0 cursor-pointer text-sm outline-none">
+    <option value="zh-CN" class="bg-surface dark:bg-inverse-surface text-on-surface" selected>Mandarim (China)</option>
+    <option value="pt-BR" class="bg-surface dark:bg-inverse-surface text-on-surface">Português (Brasil)</option>
+    <option value="es-VE" class="bg-surface dark:bg-inverse-surface text-on-surface">Espanhol (Venezuela)</option>
+    <option value="ht-HT" class="bg-surface dark:bg-inverse-surface text-on-surface">Crioulo Haitiano (Haiti)</option>
+</select>
 <h2 class="font-headline-md text-headline-md text-on-surface">Cidadão</h2>
 </div>
 <div class="flex gap-4">
@@ -168,7 +174,13 @@
 <div class="flex-1 flex flex-col">
 <div class="flex justify-between items-start mb-8">
 <div class="flex flex-col gap-1">
-<span class="font-label-caps text-label-caps text-primary">IDIOMA ATIVO: PORTUGUÊS (PT-BR)</span>
+<label for="lang-select-b" class="font-label-caps text-label-caps text-primary uppercase select-none">IDIOMA ATIVO</label>
+<select id="lang-select-b" class="bg-transparent border-0 text-on-surface font-semibold p-0 pr-8 focus:ring-0 cursor-pointer text-sm outline-none">
+    <option value="pt-BR" class="bg-surface dark:bg-inverse-surface text-on-surface" selected>Português (Brasil)</option>
+    <option value="zh-CN" class="bg-surface dark:bg-inverse-surface text-on-surface">Mandarim (China)</option>
+    <option value="es-VE" class="bg-surface dark:bg-inverse-surface text-on-surface">Espanhol (Venezuela)</option>
+    <option value="ht-HT" class="bg-surface dark:bg-inverse-surface text-on-surface">Crioulo Haitiano (Haiti)</option>
+</select>
 <h2 class="font-headline-md text-headline-md text-on-surface">Servidor</h2>
 </div>
 <div class="flex gap-4">
@@ -246,6 +258,9 @@
         let isListeningA = false;
         let isListeningB = false;
 
+        const langSelectA = document.getElementById('lang-select-a');
+        const langSelectB = document.getElementById('lang-select-b');
+
         const micBtnA = document.getElementById('btn-mic-a');
         const micBtnB = document.getElementById('btn-mic-b');
         const pulseA = document.getElementById('pulse-a');
@@ -266,6 +281,38 @@
         const btnPause = document.getElementById('btn-pause');
         const btnExport = document.getElementById('btn-export');
 
+        // Mapping to MyMemory API compatible code
+        function getMemoryLangCode(code) {
+            const map = {
+                'zh-CN': 'zh',
+                'pt-BR': 'pt',
+                'es-VE': 'es',
+                'ht-HT': 'ht'
+            };
+            return map[code] || code.split('-')[0];
+        }
+
+        // Mapping to flag or visual initials
+        function getLangVisualInitials(code) {
+            const map = {
+                'zh-CN': 'ZH',
+                'pt-BR': 'PT',
+                'es-VE': 'VE',
+                'ht-HT': 'HT'
+            };
+            return map[code] || code.slice(0, 2).toUpperCase();
+        }
+
+        // Helper to update mic label strings dynamically based on selects
+        function updateMicLabels() {
+            labelMicA.textContent = `Toque para Falar (${langSelectA.value.toUpperCase()})`;
+            labelMicB.textContent = `Toque para Falar (${langSelectB.value.toUpperCase()})`;
+        }
+
+        langSelectA.addEventListener('change', updateMicLabels);
+        langSelectB.addEventListener('change', updateMicLabels);
+        updateMicLabels();
+
         // Text-to-Speech voices matching
         function speak(text, lang) {
             if (!SpeechSynthesis) return;
@@ -282,41 +329,49 @@
         }
 
         // Playback of current bubble texts
-        btnVolumeA.addEventListener('click', () => speak(textA.textContent, 'zh-CN'));
-        btnVolumeB.addEventListener('click', () => speak(textB.textContent, 'pt-BR'));
+        btnVolumeA.addEventListener('click', () => speak(textA.textContent, langSelectA.value));
+        btnVolumeB.addEventListener('click', () => speak(textB.textContent, langSelectB.value));
 
         // Keyboard Manual Input
         btnKeyboardA.addEventListener('click', () => {
-            const inputText = prompt("Digite o texto em Mandarim / 输入中文文本:");
+            const currentLangName = langSelectA.options[langSelectA.selectedIndex].text;
+            const inputText = prompt(`Digite o texto em ${currentLangName}:`);
             if (inputText) {
-                handleTextInput(inputText, 'zh-CN', 'pt-BR');
+                handleTextInput(inputText, 'a');
             }
         });
         btnKeyboardB.addEventListener('click', () => {
-            const inputText = prompt("Digite o texto em Português / Digite o texto em português:");
+            const currentLangName = langSelectB.options[langSelectB.selectedIndex].text;
+            const inputText = prompt(`Digite o texto em ${currentLangName}:`);
             if (inputText) {
-                handleTextInput(inputText, 'pt-BR', 'zh-CN');
+                handleTextInput(inputText, 'b');
             }
         });
 
         // Add item to historical list
-        function addHistoryItem(zhText, ptText) {
+        function addHistoryItem(textFrom, langFrom, textTo, langTo) {
             const now = new Date();
             const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
             
+            const initialsFrom = getLangVisualInitials(langFrom);
+            const initialsTo = getLangVisualInitials(langTo);
+
             const historyItem = document.createElement('div');
             historyItem.className = 'flex flex-col gap-2 transition-all duration-300';
             historyItem.innerHTML = `
                 <div class="flex items-center gap-2">
-                    <span class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-xs font-bold text-on-secondary-container">ZH</span>
+                    <span class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-xs font-bold text-on-secondary-container">${initialsFrom}</span>
                     <span class="font-label-caps text-[12px] text-on-surface-variant">${timeStr}</span>
                 </div>
                 <div class="bg-surface p-3 rounded-lg border border-outline-variant/20">
-                    <p class="text-[14px] text-on-surface">${zhText}</p>
+                    <p class="text-[14px] text-on-surface">${textFrom}</p>
                 </div>
                 <span class="material-symbols-outlined text-outline text-center text-sm">south</span>
+                <div class="flex items-center gap-2">
+                    <span class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-xs font-bold text-on-primary-container">${initialsTo}</span>
+                </div>
                 <div class="bg-primary-fixed p-3 rounded-lg border border-outline-variant/20">
-                    <p class="text-[14px] text-on-primary-fixed">${ptText}</p>
+                    <p class="text-[14px] text-on-primary-fixed">${textTo}</p>
                 </div>
             `;
             historyList.prepend(historyItem);
@@ -336,21 +391,26 @@
             return "[Erro de tradução]";
         }
 
-        async function handleTextInput(originalText, fromLang, toLang) {
-            if (fromLang === 'zh-CN') {
+        async function handleTextInput(originalText, speakerSource) {
+            const langA = langSelectA.value;
+            const langB = langSelectB.value;
+            const memLangA = getMemoryLangCode(langA);
+            const memLangB = getMemoryLangCode(langB);
+
+            if (speakerSource === 'a') {
                 textA.textContent = originalText;
                 textB.textContent = "Traduzindo...";
-                const translated = await translateText(originalText, 'zh', 'pt');
+                const translated = await translateText(originalText, memLangA, memLangB);
                 textB.textContent = translated;
-                addHistoryItem(originalText, translated);
-                speak(translated, 'pt-BR');
+                addHistoryItem(originalText, langA, translated, langB);
+                speak(translated, langB);
             } else {
                 textB.textContent = originalText;
                 textA.textContent = "Traduzindo...";
-                const translated = await translateText(originalText, 'pt', 'zh');
+                const translated = await translateText(originalText, memLangB, memLangA);
                 textA.textContent = translated;
-                addHistoryItem(translated, originalText);
-                speak(translated, 'zh-CN');
+                addHistoryItem(originalText, langB, translated, langA);
+                speak(translated, langA);
             }
         }
 
@@ -366,7 +426,7 @@
             const recognition = new SpeechRecognition();
             recognition.continuous = false;
             recognition.interimResults = true;
-            recognition.lang = speaker === 'a' ? 'zh-CN' : 'pt-BR';
+            recognition.lang = speaker === 'a' ? langSelectA.value : langSelectB.value;
 
             activeRecognition = recognition;
 
@@ -413,12 +473,8 @@
                 stopAllListening();
 
                 const recordedText = finishedSpeaker === 'a' ? textA.textContent : textB.textContent;
-                if (recordedText && recordedText !== "Traduzindo..." && recordedText !== "Olá! Como posso ajudar você hoje?" && recordedText !== "您好！今天我能为您做什么吗？") {
-                    if (finishedSpeaker === 'a') {
-                        await handleTextInput(recordedText, 'zh-CN', 'pt-BR');
-                    } else {
-                        await handleTextInput(recordedText, 'pt-BR', 'zh-CN');
-                    }
+                if (recordedText && recordedText !== "Traduzindo...") {
+                    await handleTextInput(recordedText, finishedSpeaker);
                 }
             };
 
@@ -440,8 +496,7 @@
             pulseB.classList.add('hidden');
             waveformA.classList.add('invisible');
             waveformB.classList.add('invisible');
-            labelMicA.textContent = "Toque para Falar (ZH-CN)";
-            labelMicB.textContent = "Toque para Falar (PT-BR)";
+            updateMicLabels();
             micBtnA.classList.remove('scale-95', 'opacity-90');
             micBtnB.classList.remove('scale-95', 'opacity-90');
         }
@@ -473,8 +528,8 @@
         // Clear button
         btnClear.addEventListener('click', () => {
             stopAllListening();
-            textA.textContent = "您好！今天我能为您做什么吗？";
-            textB.textContent = "Olá! Como posso ajudar você hoje?";
+            textA.textContent = "...";
+            textB.textContent = "...";
             historyList.innerHTML = '';
         });
 
@@ -492,8 +547,8 @@
                 const timeSpan = item.querySelector('.font-label-caps');
                 const time = timeSpan ? timeSpan.textContent : "Início";
                 if (paragraphs.length >= 2) {
-                    historyText += `[${time}] Cidadão (ZH): ${paragraphs[0].textContent}\n`;
-                    historyText += `[${time}] Servidor (PT): ${paragraphs[1].textContent}\n\n`;
+                    historyText += `[${time}] Cidadão: ${paragraphs[0].textContent}\n`;
+                    historyText += `[${time}] Servidor: ${paragraphs[1].textContent}\n\n`;
                 }
             }
 
