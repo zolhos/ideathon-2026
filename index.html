@@ -232,7 +232,16 @@
 </div>
 </div>
 </aside>
-<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-2 sm:gap-4 bg-surface-container-high/90 backdrop-blur-md px-4 sm:px-6 py-2.5 rounded-full shadow-2xl border border-outline-variant/50 z-50 max-w-[95vw] overflow-x-auto whitespace-nowrap">
+</div>
+</main>
+
+<!-- Floating discreet menu trigger button -->
+<button id="btn-toggle-controls" class="fixed bottom-6 right-6 w-10 h-10 rounded-full bg-surface-container-highest/80 backdrop-blur-md border border-outline-variant/30 flex items-center justify-center shadow-lg hover:bg-surface hover:scale-105 active:scale-95 transition-all duration-300 z-50">
+    <span id="ic-toggle-controls" class="material-symbols-outlined text-[20px] text-on-surface-variant">menu</span>
+</button>
+
+<!-- Sliding Controls Bar (hidden by default) -->
+<div id="controls-bar" class="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 sm:gap-4 bg-surface-container-high/95 backdrop-blur-md px-4 sm:px-6 py-2.5 rounded-full shadow-2xl border border-outline-variant/50 z-50 max-w-[80vw] sm:max-w-none overflow-x-auto whitespace-nowrap transform translate-y-[180%] transition-transform duration-300">
 <button id="btn-fullscreen" class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors">
 <span id="ic-fullscreen" class="material-symbols-outlined text-sm sm:text-base">fullscreen</span>
 <span class="font-label-caps text-[10px] sm:text-[12px]">TELA CHEIA</span>
@@ -253,8 +262,6 @@
 <span class="font-label-caps text-[10px] sm:text-[12px]">EXPORTAR</span>
 </button>
 </div>
-</div>
-</main>
 
 <!-- Slide-out Drawer for History on smaller screens -->
 <div id="history-drawer" class="fixed inset-y-0 right-0 w-80 bg-surface/95 backdrop-blur-md border-l border-outline-variant/30 shadow-2xl z-[100] transform translate-x-full transition-transform duration-300 flex flex-col p-6">
@@ -300,6 +307,26 @@
         const btnExport = document.getElementById('btn-export');
         const btnFullscreen = document.getElementById('btn-fullscreen');
         const icFullscreen = document.getElementById('ic-fullscreen');
+        const btnToggleControls = document.getElementById('btn-toggle-controls');
+        const icToggleControls = document.getElementById('ic-toggle-controls');
+        const controlsBar = document.getElementById('controls-bar');
+
+        let isControlsOpen = false;
+
+        btnToggleControls.addEventListener('click', () => {
+            isControlsOpen = !isControlsOpen;
+            if (isControlsOpen) {
+                controlsBar.classList.remove('translate-y-[180%]');
+                icToggleControls.textContent = 'close';
+                btnToggleControls.classList.add('!bg-primary', '!text-white');
+                icToggleControls.classList.remove('text-on-surface-variant');
+            } else {
+                controlsBar.classList.add('translate-y-[180%]');
+                icToggleControls.textContent = 'menu';
+                btnToggleControls.classList.remove('!bg-primary', '!text-white');
+                icToggleControls.classList.add('text-on-surface-variant');
+            }
+        });
 
         // History drawer controls
         const btnHeaderHistory = document.getElementById('btn-header-history');
