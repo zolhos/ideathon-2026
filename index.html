@@ -116,105 +116,105 @@
     </style>
 </head>
 <body class="bg-background text-on-background font-body-lg h-screen w-screen overflow-hidden flex flex-col">
-<header class="bg-surface-container-highest dark:bg-inverse-surface flex justify-between items-center w-full px-gutter h-14 fixed top-0 z-50">
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary dark:text-inverse-primary">close</span>
-<h1 class="font-headline-md text-headline-md font-bold text-on-surface dark:text-inverse-on-surface text-[18px]">Vinhedo Local Government - Real-time Translation</h1>
+<header class="bg-surface-container-highest dark:bg-inverse-surface flex justify-between items-center w-full px-4 sm:px-gutter h-14 fixed top-0 z-50">
+<div class="flex items-center gap-2 sm:gap-4">
+<span class="material-symbols-outlined text-primary dark:text-inverse-primary cursor-pointer">close</span>
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface dark:text-inverse-on-surface text-[15px] sm:text-[18px] truncate max-w-[200px] sm:max-w-none">Vinhedo Local Government - Real-time Translation</h1>
 </div>
 <div class="flex gap-4">
-<span class="material-symbols-outlined text-on-surface-variant dark:text-outline-variant">settings</span>
-<span class="material-symbols-outlined text-on-surface-variant dark:text-outline-variant">history</span>
+<span class="material-symbols-outlined text-on-surface-variant dark:text-outline-variant cursor-pointer">settings</span>
+<span id="btn-header-history" class="material-symbols-outlined text-on-surface-variant dark:text-outline-variant cursor-pointer hover:text-primary transition-colors">history</span>
 </div>
 </header>
 <main class="flex-1 flex flex-col pt-14 h-full relative">
-<div class="flex-1 bg-surface-container-low border-b border-outline-variant/30 flex flex-col rotate-180 p-gutter transition-all duration-500 overflow-hidden relative" id="participant-a">
-<div class="flex justify-between items-start mb-8">
+<div class="flex-1 bg-surface-container-low border-b border-outline-variant/30 flex flex-col rotate-180 p-4 sm:p-gutter transition-all duration-500 overflow-hidden relative" id="participant-a">
+<div class="flex justify-between items-start mb-4 sm:mb-8">
 <div class="flex flex-col gap-1">
-<label for="lang-select-a" class="font-label-caps text-label-caps text-primary uppercase select-none">IDIOMA ATIVO</label>
-<select id="lang-select-a" class="bg-transparent border-0 text-on-surface font-semibold p-0 pr-8 focus:ring-0 cursor-pointer text-sm outline-none">
+<label for="lang-select-a" class="font-label-caps text-label-caps text-primary uppercase select-none text-xs">IDIOMA ATIVO</label>
+<select id="lang-select-a" class="bg-transparent border-0 text-on-surface font-semibold p-0 pr-8 focus:ring-0 cursor-pointer text-xs sm:text-sm outline-none">
     <option value="zh-CN" class="bg-surface dark:bg-inverse-surface text-on-surface" selected>Mandarim (China)</option>
     <option value="pt-BR" class="bg-surface dark:bg-inverse-surface text-on-surface">Português (Brasil)</option>
     <option value="es-VE" class="bg-surface dark:bg-inverse-surface text-on-surface">Espanhol (Venezuela)</option>
     <option value="ht-HT" class="bg-surface dark:bg-inverse-surface text-on-surface">Crioulo Haitiano (Haiti)</option>
 </select>
-<h2 class="font-headline-md text-headline-md text-on-surface">Cidadão</h2>
+<h2 class="font-headline-md text-headline-md text-on-surface text-base sm:text-2xl">Cidadão</h2>
 </div>
-<div class="flex gap-4">
-<button id="btn-volume-a" class="w-12 h-12 rounded-full bg-surface flex items-center justify-center border border-outline-variant hover:bg-surface-container transition-colors">
-<span class="material-symbols-outlined text-on-surface-variant">volume_up</span>
+<div class="flex gap-2 sm:gap-4">
+<button id="btn-volume-a" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-surface flex items-center justify-center border border-outline-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant text-sm sm:text-base">volume_up</span>
 </button>
-<button id="btn-keyboard-a" class="w-12 h-12 rounded-full bg-surface flex items-center justify-center border border-outline-variant hover:bg-surface-container transition-colors">
-<span class="material-symbols-outlined text-on-surface-variant">keyboard</span>
+<button id="btn-keyboard-a" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-surface flex items-center justify-center border border-outline-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant text-sm sm:text-base">keyboard</span>
 </button>
 </div>
 </div>
 <div class="flex-1 flex flex-col justify-center items-center">
-<div class="max-w-[80%] bg-secondary-container text-on-secondary-container p-bubble-padding rounded-xl mb-12 shadow-sm self-end">
-<p id="text-a" class="font-body-xl text-body-xl leading-relaxed">您好！今天我能为您做什么吗？</p>
+<div class="max-w-[90%] sm:max-w-[80%] bg-secondary-container text-on-secondary-container p-4 sm:p-bubble-padding rounded-xl mb-4 sm:mb-8 shadow-sm self-end max-h-24 sm:max-h-40 overflow-y-auto">
+<p id="text-a" class="font-body-xl text-body-xl leading-relaxed text-sm sm:text-base md:text-xl">您好！今天我能为您做什么吗？</p>
 </div>
-<div class="flex flex-col items-center gap-6">
+<div class="flex flex-col items-center gap-3 sm:gap-6">
 <div class="relative flex items-center justify-center">
-<div id="pulse-a" class="absolute w-32 h-32 rounded-full bg-secondary/10 mic-pulse hidden"></div>
-<button id="btn-mic-a" class="relative w-24 h-24 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-lg active:scale-95 transition-transform">
-<span class="material-symbols-outlined !text-4xl" style="font-variation-settings: 'FILL' 1;">mic</span>
+<div id="pulse-a" class="absolute w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full bg-secondary/10 mic-pulse hidden"></div>
+<button id="btn-mic-a" class="relative w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined !text-2xl sm:!text-3xl md:!text-4xl" style="font-variation-settings: 'FILL' 1;">mic</span>
 </button>
 </div>
-<div id="waveform-a" class="flex items-center gap-2 h-10 invisible">
-<div class="waveform-bar w-1.5 bg-secondary rounded-full" style="animation-delay: 0.1s"></div>
-<div class="waveform-bar w-1.5 bg-secondary rounded-full" style="animation-delay: 0.3s"></div>
-<div class="waveform-bar w-1.5 bg-secondary rounded-full" style="animation-delay: 0.2s"></div>
-<div class="waveform-bar w-1.5 bg-secondary rounded-full" style="animation-delay: 0.5s"></div>
-<div class="waveform-bar w-1.5 bg-secondary rounded-full" style="animation-delay: 0.4s"></div>
+<div id="waveform-a" class="flex items-center gap-2 h-6 sm:h-10 invisible">
+<div class="waveform-bar w-1 bg-secondary rounded-full" style="animation-delay: 0.1s"></div>
+<div class="waveform-bar w-1 bg-secondary rounded-full" style="animation-delay: 0.3s"></div>
+<div class="waveform-bar w-1 bg-secondary rounded-full" style="animation-delay: 0.2s"></div>
+<div class="waveform-bar w-1 bg-secondary rounded-full" style="animation-delay: 0.5s"></div>
+<div class="waveform-bar w-1 bg-secondary rounded-full" style="animation-delay: 0.4s"></div>
 </div>
-<span id="label-mic-a" class="font-label-caps text-label-caps text-on-surface-variant">Toque para Falar (ZH-CN)</span>
+<span id="label-mic-a" class="font-label-caps text-label-caps text-on-surface-variant text-[10px] sm:text-xs">Toque para Falar (ZH-CN)</span>
 </div>
 </div>
 </div>
-<div class="flex-1 bg-surface-container flex p-gutter transition-all duration-500 overflow-hidden relative" id="participant-b">
+<div class="flex-1 bg-surface-container flex p-4 sm:p-gutter transition-all duration-500 overflow-hidden relative" id="participant-b">
 <div class="flex-1 flex flex-col">
-<div class="flex justify-between items-start mb-8">
+<div class="flex justify-between items-start mb-4 sm:mb-8">
 <div class="flex flex-col gap-1">
-<label for="lang-select-b" class="font-label-caps text-label-caps text-primary uppercase select-none">IDIOMA ATIVO</label>
-<select id="lang-select-b" class="bg-transparent border-0 text-on-surface font-semibold p-0 pr-8 focus:ring-0 cursor-pointer text-sm outline-none">
+<label for="lang-select-b" class="font-label-caps text-label-caps text-primary uppercase select-none text-xs">IDIOMA ATIVO</label>
+<select id="lang-select-b" class="bg-transparent border-0 text-on-surface font-semibold p-0 pr-8 focus:ring-0 cursor-pointer text-xs sm:text-sm outline-none">
     <option value="pt-BR" class="bg-surface dark:bg-inverse-surface text-on-surface" selected>Português (Brasil)</option>
     <option value="zh-CN" class="bg-surface dark:bg-inverse-surface text-on-surface">Mandarim (China)</option>
     <option value="es-VE" class="bg-surface dark:bg-inverse-surface text-on-surface">Espanhol (Venezuela)</option>
     <option value="ht-HT" class="bg-surface dark:bg-inverse-surface text-on-surface">Crioulo Haitiano (Haiti)</option>
 </select>
-<h2 class="font-headline-md text-headline-md text-on-surface">Servidor</h2>
+<h2 class="font-headline-md text-headline-md text-on-surface text-base sm:text-2xl">Servidor</h2>
 </div>
-<div class="flex gap-4">
-<button id="btn-volume-b" class="w-12 h-12 rounded-full bg-surface flex items-center justify-center border border-outline-variant hover:bg-surface-container transition-colors">
-<span class="material-symbols-outlined text-on-surface-variant">volume_up</span>
+<div class="flex gap-2 sm:gap-4">
+<button id="btn-volume-b" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-surface flex items-center justify-center border border-outline-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant text-sm sm:text-base">volume_up</span>
 </button>
-<button id="btn-keyboard-b" class="w-12 h-12 rounded-full bg-surface flex items-center justify-center border border-outline-variant hover:bg-surface-container transition-colors">
-<span class="material-symbols-outlined text-on-surface-variant">keyboard</span>
+<button id="btn-keyboard-b" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-surface flex items-center justify-center border border-outline-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant text-sm sm:text-base">keyboard</span>
 </button>
 </div>
 </div>
 <div class="flex-1 flex flex-col justify-center items-center">
-<div class="max-w-[80%] bg-primary text-on-primary p-bubble-padding rounded-xl mb-12 shadow-sm self-start">
-<p id="text-b" class="font-body-xl text-body-xl leading-relaxed">Olá! Como posso ajudar você hoje?</p>
+<div class="max-w-[90%] sm:max-w-[80%] bg-primary text-on-primary p-4 sm:p-bubble-padding rounded-xl mb-4 sm:mb-8 shadow-sm self-start max-h-24 sm:max-h-40 overflow-y-auto">
+<p id="text-b" class="font-body-xl text-body-xl leading-relaxed text-sm sm:text-base md:text-xl">Olá! Como posso ajudar você hoje?</p>
 </div>
-<div class="flex flex-col items-center gap-6">
+<div class="flex flex-col items-center gap-3 sm:gap-6">
 <div class="relative flex items-center justify-center">
-<div id="pulse-b" class="absolute w-32 h-32 rounded-full bg-primary/10 mic-pulse hidden"></div>
-<button id="btn-mic-b" class="relative w-24 h-24 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg active:scale-95 transition-transform">
-<span class="material-symbols-outlined !text-4xl" style="font-variation-settings: 'FILL' 1;">mic</span>
+<div id="pulse-b" class="absolute w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full bg-primary/10 mic-pulse hidden"></div>
+<button id="btn-mic-b" class="relative w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined !text-2xl sm:!text-3xl md:!text-4xl" style="font-variation-settings: 'FILL' 1;">mic</span>
 </button>
 </div>
-<div id="waveform-b" class="flex items-center gap-2 h-10 invisible">
-<div class="waveform-bar w-1.5 bg-primary rounded-full" style="animation-delay: 0.2s"></div>
-<div class="waveform-bar w-1.5 bg-primary rounded-full" style="animation-delay: 0.5s"></div>
-<div class="waveform-bar w-1.5 bg-primary rounded-full" style="animation-delay: 0.1s"></div>
-<div class="waveform-bar w-1.5 bg-primary rounded-full" style="animation-delay: 0.4s"></div>
-<div class="waveform-bar w-1.5 bg-primary rounded-full" style="animation-delay: 0.3s"></div>
+<div id="waveform-b" class="flex items-center gap-2 h-6 sm:h-10 invisible">
+<div class="waveform-bar w-1 bg-primary rounded-full" style="animation-delay: 0.2s"></div>
+<div class="waveform-bar w-1 bg-primary rounded-full" style="animation-delay: 0.5s"></div>
+<div class="waveform-bar w-1 bg-primary rounded-full" style="animation-delay: 0.1s"></div>
+<div class="waveform-bar w-1 bg-primary rounded-full" style="animation-delay: 0.4s"></div>
+<div class="waveform-bar w-1 bg-primary rounded-full" style="animation-delay: 0.3s"></div>
 </div>
-<span id="label-mic-b" class="font-label-caps text-label-caps text-on-surface-variant">Toque para Falar (PT-BR)</span>
+<span id="label-mic-b" class="font-label-caps text-label-caps text-on-surface-variant text-[10px] sm:text-xs">Toque para Falar (PT-BR)</span>
 </div>
 </div>
 </div>
-<aside class="w-80 ml-8 flex flex-col gap-4 border-l border-outline-variant/30 pl-8 overflow-y-auto">
+<aside class="hidden xl:flex w-80 ml-8 flex-col gap-4 border-l border-outline-variant/30 pl-8 overflow-y-auto">
 <h3 class="font-label-caps text-label-caps text-on-surface-variant border-b border-outline-variant pb-2 mb-2">HISTÓRICO RECENTE</h3>
 <div id="history-list" class="space-y-6">
 <div class="flex flex-col gap-2">
@@ -234,20 +234,34 @@
 </aside>
 </div>
 </main>
-<div class="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4 bg-surface-container-high/80 backdrop-blur-md px-6 py-3 rounded-full shadow-xl border border-outline-variant/40 z-50">
+
+<!-- Slide-out Drawer for History on smaller screens -->
+<div id="history-drawer" class="fixed inset-y-0 right-0 w-80 bg-surface/95 backdrop-blur-md border-l border-outline-variant/30 shadow-2xl z-[100] transform translate-x-full transition-transform duration-300 flex flex-col p-6">
+    <div class="flex justify-between items-center border-b border-outline-variant pb-4 mb-4">
+        <h3 class="font-label-caps text-label-caps text-on-surface">Histórico de Conversas</h3>
+        <button id="btn-close-drawer" class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-surface-container transition-colors">
+            <span class="material-symbols-outlined text-[18px]">close</span>
+        </button>
+    </div>
+    <div id="drawer-history-list" class="flex-1 overflow-y-auto space-y-6">
+        <!-- Synced dynamic history list items -->
+    </div>
+</div>
+
+<div class="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 sm:gap-4 bg-surface-container-high/80 backdrop-blur-md px-4 sm:px-6 py-3 rounded-full shadow-xl border border-outline-variant/40 z-50 max-w-[90vw] overflow-x-auto whitespace-nowrap">
 <button id="btn-pause" class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors">
-<span class="material-symbols-outlined">pause_circle</span>
-<span class="font-label-caps text-[12px]">PAUSAR</span>
+<span class="material-symbols-outlined text-sm sm:text-base">pause_circle</span>
+<span class="font-label-caps text-[10px] sm:text-[12px]">PAUSAR</span>
 </button>
 <div class="w-px h-6 bg-outline-variant"></div>
 <button id="btn-clear" class="flex items-center gap-2 text-on-surface-variant hover:text-error transition-colors">
-<span class="material-symbols-outlined">delete_forever</span>
-<span class="font-label-caps text-[12px]">LIMPAR</span>
+<span class="material-symbols-outlined text-sm sm:text-base">delete_forever</span>
+<span class="font-label-caps text-[10px] sm:text-[12px]">LIMPAR</span>
 </button>
 <div class="w-px h-6 bg-outline-variant"></div>
 <button id="btn-export" class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors">
-<span class="material-symbols-outlined">share</span>
-<span class="font-label-caps text-[12px]">EXPORTAR</span>
+<span class="material-symbols-outlined text-sm sm:text-base">share</span>
+<span class="font-label-caps text-[10px] sm:text-[12px]">EXPORTAR</span>
 </button>
 </div>
 <script>
@@ -280,6 +294,19 @@
         const btnClear = document.getElementById('btn-clear');
         const btnPause = document.getElementById('btn-pause');
         const btnExport = document.getElementById('btn-export');
+
+        // History drawer controls
+        const btnHeaderHistory = document.getElementById('btn-header-history');
+        const historyDrawer = document.getElementById('history-drawer');
+        const btnCloseDrawer = document.getElementById('btn-close-drawer');
+        const drawerHistoryList = document.getElementById('drawer-history-list');
+
+        btnHeaderHistory.addEventListener('click', () => {
+            historyDrawer.classList.remove('translate-x-full');
+        });
+        btnCloseDrawer.addEventListener('click', () => {
+            historyDrawer.classList.add('translate-x-full');
+        });
 
         // Mapping to MyMemory API compatible code
         function getMemoryLangCode(code) {
@@ -374,7 +401,12 @@
                     <p class="text-[14px] text-on-primary-fixed">${textTo}</p>
                 </div>
             `;
+            // Add to main desktop sidebar
             historyList.prepend(historyItem);
+
+            // Clone and add to responsive drawer
+            const drawerItem = historyItem.cloneNode(true);
+            drawerHistoryList.prepend(drawerItem);
         }
 
         // Call MyMemory translation API
@@ -531,12 +563,14 @@
             textA.textContent = "...";
             textB.textContent = "...";
             historyList.innerHTML = '';
+            drawerHistoryList.innerHTML = '';
         });
 
         // Export history to text file
         btnExport.addEventListener('click', () => {
             let historyText = "--- Stitch Tabletop Translator Transcript ---\n\n";
-            const items = historyList.children;
+            // We use history drawer list as the source since it holds all items synced as well
+            const items = drawerHistoryList.children;
             if (items.length === 0) {
                 alert("Nenhum histórico para exportar!");
                 return;
