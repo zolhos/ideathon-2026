@@ -232,23 +232,12 @@
 </div>
 </div>
 </aside>
-</div>
-</main>
-
-<!-- Slide-out Drawer for History on smaller screens -->
-<div id="history-drawer" class="fixed inset-y-0 right-0 w-80 bg-surface/95 backdrop-blur-md border-l border-outline-variant/30 shadow-2xl z-[100] transform translate-x-full transition-transform duration-300 flex flex-col p-6">
-    <div class="flex justify-between items-center border-b border-outline-variant pb-4 mb-4">
-        <h3 class="font-label-caps text-label-caps text-on-surface">Histórico de Conversas</h3>
-        <button id="btn-close-drawer" class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-surface-container transition-colors">
-            <span class="material-symbols-outlined text-[18px]">close</span>
-        </button>
-    </div>
-    <div id="drawer-history-list" class="flex-1 overflow-y-auto space-y-6">
-        <!-- Synced dynamic history list items -->
-    </div>
-</div>
-
-<div class="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 sm:gap-4 bg-surface-container-high/80 backdrop-blur-md px-4 sm:px-6 py-3 rounded-full shadow-xl border border-outline-variant/40 z-50 max-w-[90vw] overflow-x-auto whitespace-nowrap">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-2 sm:gap-4 bg-surface-container-high/90 backdrop-blur-md px-4 sm:px-6 py-2.5 rounded-full shadow-2xl border border-outline-variant/50 z-50 max-w-[95vw] overflow-x-auto whitespace-nowrap">
+<button id="btn-fullscreen" class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors">
+<span id="ic-fullscreen" class="material-symbols-outlined text-sm sm:text-base">fullscreen</span>
+<span class="font-label-caps text-[10px] sm:text-[12px]">TELA CHEIA</span>
+</button>
+<div class="w-px h-6 bg-outline-variant"></div>
 <button id="btn-pause" class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors">
 <span class="material-symbols-outlined text-sm sm:text-base">pause_circle</span>
 <span class="font-label-caps text-[10px] sm:text-[12px]">PAUSAR</span>
@@ -263,6 +252,21 @@
 <span class="material-symbols-outlined text-sm sm:text-base">share</span>
 <span class="font-label-caps text-[10px] sm:text-[12px]">EXPORTAR</span>
 </button>
+</div>
+</div>
+</main>
+
+<!-- Slide-out Drawer for History on smaller screens -->
+<div id="history-drawer" class="fixed inset-y-0 right-0 w-80 bg-surface/95 backdrop-blur-md border-l border-outline-variant/30 shadow-2xl z-[100] transform translate-x-full transition-transform duration-300 flex flex-col p-6">
+    <div class="flex justify-between items-center border-b border-outline-variant pb-4 mb-4">
+        <h3 class="font-label-caps text-label-caps text-on-surface">Histórico de Conversas</h3>
+        <button id="btn-close-drawer" class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-surface-container transition-colors">
+            <span class="material-symbols-outlined text-[18px]">close</span>
+        </button>
+    </div>
+    <div id="drawer-history-list" class="flex-1 overflow-y-auto space-y-6">
+        <!-- Synced dynamic history list items -->
+    </div>
 </div>
 <script>
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -294,6 +298,8 @@
         const btnClear = document.getElementById('btn-clear');
         const btnPause = document.getElementById('btn-pause');
         const btnExport = document.getElementById('btn-export');
+        const btnFullscreen = document.getElementById('btn-fullscreen');
+        const icFullscreen = document.getElementById('ic-fullscreen');
 
         // History drawer controls
         const btnHeaderHistory = document.getElementById('btn-header-history');
@@ -306,6 +312,32 @@
         });
         btnCloseDrawer.addEventListener('click', () => {
             historyDrawer.classList.add('translate-x-full');
+        });
+
+        btnFullscreen.addEventListener('click', () => {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.error("Erro ao ativar tela cheia:", err.message);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        });
+
+        document.addEventListener('fullscreenchange', () => {
+            const header = document.querySelector('header');
+            const main = document.querySelector('main');
+            if (document.fullscreenElement) {
+                icFullscreen.textContent = 'fullscreen_exit';
+                header.classList.add('hidden');
+                main.classList.remove('pt-14');
+                main.classList.add('pt-0');
+            } else {
+                icFullscreen.textContent = 'fullscreen';
+                header.classList.remove('hidden');
+                main.classList.add('pt-14');
+                main.classList.remove('pt-0');
+            }
         });
 
         // Mapping to MyMemory API compatible code
