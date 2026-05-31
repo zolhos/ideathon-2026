@@ -130,37 +130,37 @@
 <div class="flex-1 bg-surface-container-low border-b border-outline-variant/30 flex flex-col rotate-180 p-gutter transition-all duration-500 overflow-hidden relative" id="participant-a">
 <div class="flex justify-between items-start mb-8">
 <div class="flex flex-col gap-1">
-<span class="font-label-caps text-label-caps text-primary">IDIOAMA ATIVO: MANDARIM (ZN-CN)</span>
+<span class="font-label-caps text-label-caps text-primary">IDIOMA ATIVO: MANDARIM (ZH-CN)</span>
 <h2 class="font-headline-md text-headline-md text-on-surface">Cidadão</h2>
 </div>
 <div class="flex gap-4">
-<button class="w-12 h-12 rounded-full bg-surface flex items-center justify-center border border-outline-variant">
+<button id="btn-volume-a" class="w-12 h-12 rounded-full bg-surface flex items-center justify-center border border-outline-variant hover:bg-surface-container transition-colors">
 <span class="material-symbols-outlined text-on-surface-variant">volume_up</span>
 </button>
-<button class="w-12 h-12 rounded-full bg-surface flex items-center justify-center border border-outline-variant">
+<button id="btn-keyboard-a" class="w-12 h-12 rounded-full bg-surface flex items-center justify-center border border-outline-variant hover:bg-surface-container transition-colors">
 <span class="material-symbols-outlined text-on-surface-variant">keyboard</span>
 </button>
 </div>
 </div>
 <div class="flex-1 flex flex-col justify-center items-center">
 <div class="max-w-[80%] bg-secondary-container text-on-secondary-container p-bubble-padding rounded-xl mb-12 shadow-sm self-end">
-<p class="font-body-xl text-body-xl leading-relaxed">您好！今天我能为您做什么吗？</p>
+<p id="text-a" class="font-body-xl text-body-xl leading-relaxed">您好！今天我能为您做什么吗？</p>
 </div>
 <div class="flex flex-col items-center gap-6">
 <div class="relative flex items-center justify-center">
-<div class="absolute w-32 h-32 rounded-full bg-secondary/10 mic-pulse"></div>
-<button class="relative w-24 h-24 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-lg active:scale-95 transition-transform">
+<div id="pulse-a" class="absolute w-32 h-32 rounded-full bg-secondary/10 mic-pulse hidden"></div>
+<button id="btn-mic-a" class="relative w-24 h-24 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-lg active:scale-95 transition-transform">
 <span class="material-symbols-outlined !text-4xl" style="font-variation-settings: 'FILL' 1;">mic</span>
 </button>
 </div>
-<div class="flex items-center gap-2 h-10">
+<div id="waveform-a" class="flex items-center gap-2 h-10 invisible">
 <div class="waveform-bar w-1.5 bg-secondary rounded-full" style="animation-delay: 0.1s"></div>
 <div class="waveform-bar w-1.5 bg-secondary rounded-full" style="animation-delay: 0.3s"></div>
 <div class="waveform-bar w-1.5 bg-secondary rounded-full" style="animation-delay: 0.2s"></div>
 <div class="waveform-bar w-1.5 bg-secondary rounded-full" style="animation-delay: 0.5s"></div>
 <div class="waveform-bar w-1.5 bg-secondary rounded-full" style="animation-delay: 0.4s"></div>
 </div>
-<span class="font-label-caps text-label-caps text-on-surface-variant">Clique para Falar (ZN-CN)</span>
+<span id="label-mic-a" class="font-label-caps text-label-caps text-on-surface-variant">Toque para Falar (ZH-CN)</span>
 </div>
 </div>
 </div>
@@ -172,44 +172,43 @@
 <h2 class="font-headline-md text-headline-md text-on-surface">Servidor</h2>
 </div>
 <div class="flex gap-4">
-<button class="w-12 h-12 rounded-full bg-surface flex items-center justify-center border border-outline-variant">
+<button id="btn-volume-b" class="w-12 h-12 rounded-full bg-surface flex items-center justify-center border border-outline-variant hover:bg-surface-container transition-colors">
 <span class="material-symbols-outlined text-on-surface-variant">volume_up</span>
 </button>
-<button class="w-12 h-12 rounded-full bg-surface flex items-center justify-center border border-outline-variant">
+<button id="btn-keyboard-b" class="w-12 h-12 rounded-full bg-surface flex items-center justify-center border border-outline-variant hover:bg-surface-container transition-colors">
 <span class="material-symbols-outlined text-on-surface-variant">keyboard</span>
 </button>
 </div>
 </div>
 <div class="flex-1 flex flex-col justify-center items-center">
 <div class="max-w-[80%] bg-primary text-on-primary p-bubble-padding rounded-xl mb-12 shadow-sm self-start">
-<p class="font-body-xl text-body-xl leading-relaxed">Olá! Como posso ajudar você hoje?</p>
-<span class="block mt-2 opacity-80 text-sm">Mariana Silva, Atendente</span>
+<p id="text-b" class="font-body-xl text-body-xl leading-relaxed">Olá! Como posso ajudar você hoje?</p>
 </div>
 <div class="flex flex-col items-center gap-6">
 <div class="relative flex items-center justify-center">
-<div class="absolute w-32 h-32 rounded-full bg-primary/10 mic-pulse"></div>
-<button class="relative w-24 h-24 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg active:scale-95 transition-transform">
+<div id="pulse-b" class="absolute w-32 h-32 rounded-full bg-primary/10 mic-pulse hidden"></div>
+<button id="btn-mic-b" class="relative w-24 h-24 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg active:scale-95 transition-transform">
 <span class="material-symbols-outlined !text-4xl" style="font-variation-settings: 'FILL' 1;">mic</span>
 </button>
 </div>
-<div class="flex items-center gap-2 h-10">
+<div id="waveform-b" class="flex items-center gap-2 h-10 invisible">
 <div class="waveform-bar w-1.5 bg-primary rounded-full" style="animation-delay: 0.2s"></div>
 <div class="waveform-bar w-1.5 bg-primary rounded-full" style="animation-delay: 0.5s"></div>
 <div class="waveform-bar w-1.5 bg-primary rounded-full" style="animation-delay: 0.1s"></div>
 <div class="waveform-bar w-1.5 bg-primary rounded-full" style="animation-delay: 0.4s"></div>
 <div class="waveform-bar w-1.5 bg-primary rounded-full" style="animation-delay: 0.3s"></div>
 </div>
-<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Toque para Falar (PT-BR)</span>
+<span id="label-mic-b" class="font-label-caps text-label-caps text-on-surface-variant">Toque para Falar (PT-BR)</span>
 </div>
 </div>
 </div>
 <aside class="w-80 ml-8 flex flex-col gap-4 border-l border-outline-variant/30 pl-8 overflow-y-auto">
 <h3 class="font-label-caps text-label-caps text-on-surface-variant border-b border-outline-variant pb-2 mb-2">HISTÓRICO RECENTE</h3>
-<div class="space-y-6">
+<div id="history-list" class="space-y-6">
 <div class="flex flex-col gap-2">
 <div class="flex items-center gap-2">
-<span class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-xs font-bold text-on-secondary-container">ZN</span>
-<span class="font-label-caps text-[12px] text-on-surface-variant">13:42</span>
+<span class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-xs font-bold text-on-secondary-container">ZH</span>
+<span class="font-label-caps text-[12px] text-on-surface-variant">Início</span>
 </div>
 <div class="bg-surface p-3 rounded-lg border border-outline-variant/20">
 <p class="text-[14px] text-on-surface">您好！今天我能为您做什么吗？</p>
@@ -219,51 +218,302 @@
 <p class="text-[14px] text-on-primary-fixed">Olá! Como posso ajudar você hoje?</p>
 </div>
 </div>
-<div class="flex flex-col gap-2 opacity-60">
-<div class="flex items-center gap-2">
-<span class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-xs font-bold text-on-primary-container">PT</span>
-<span class="font-label-caps text-[12px] text-on-surface-variant">13:40</span>
-</div>
-<div class="bg-surface p-3 rounded-lg border border-outline-variant/20">
-<p class="text-[14px] text-on-surface">Preciso renovar meu alvará comercial.</p>
-</div>
-<span class="material-symbols-outlined text-outline text-center text-sm">south</span>
-<div class="bg-secondary-fixed p-3 rounded-lg border border-outline-variant/20">
-<p class="text-[14px] text-on-secondary-fixed">我需要续订我的商业许可证。</p>
-</div>
-</div>
 </div>
 </aside>
 </div>
 </main>
 <div class="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4 bg-surface-container-high/80 backdrop-blur-md px-6 py-3 rounded-full shadow-xl border border-outline-variant/40 z-50">
-<button class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors">
+<button id="btn-pause" class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors">
 <span class="material-symbols-outlined">pause_circle</span>
 <span class="font-label-caps text-[12px]">PAUSAR</span>
 </button>
 <div class="w-px h-6 bg-outline-variant"></div>
-<button class="flex items-center gap-2 text-on-surface-variant hover:text-error transition-colors">
+<button id="btn-clear" class="flex items-center gap-2 text-on-surface-variant hover:text-error transition-colors">
 <span class="material-symbols-outlined">delete_forever</span>
 <span class="font-label-caps text-[12px]">LIMPAR</span>
 </button>
 <div class="w-px h-6 bg-outline-variant"></div>
-<button class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors">
+<button id="btn-export" class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors">
 <span class="material-symbols-outlined">share</span>
 <span class="font-label-caps text-[12px]">EXPORTAR</span>
 </button>
 </div>
 <script>
-        const micButtons = document.querySelectorAll('button.relative.w-24');
-        micButtons.forEach(btn => {
-            btn.addEventListener('mousedown', () => {
-                btn.style.transform = 'scale(0.9)';
-            });
-            btn.addEventListener('mouseup', () => {
-                btn.style.transform = 'scale(1)';
-            });
-            btn.addEventListener('mouseleave', () => {
-                btn.style.transform = 'scale(1)';
-            });
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const SpeechSynthesis = window.speechSynthesis;
+
+        let activeRecognition = null;
+        let isListeningA = false;
+        let isListeningB = false;
+
+        const micBtnA = document.getElementById('btn-mic-a');
+        const micBtnB = document.getElementById('btn-mic-b');
+        const pulseA = document.getElementById('pulse-a');
+        const pulseB = document.getElementById('pulse-b');
+        const waveformA = document.getElementById('waveform-a');
+        const waveformB = document.getElementById('waveform-b');
+        const labelMicA = document.getElementById('label-mic-a');
+        const labelMicB = document.getElementById('label-mic-b');
+
+        const textA = document.getElementById('text-a');
+        const textB = document.getElementById('text-b');
+        const btnVolumeA = document.getElementById('btn-volume-a');
+        const btnVolumeB = document.getElementById('btn-volume-b');
+        const btnKeyboardA = document.getElementById('btn-keyboard-a');
+        const btnKeyboardB = document.getElementById('btn-keyboard-b');
+        const historyList = document.getElementById('history-list');
+        const btnClear = document.getElementById('btn-clear');
+        const btnPause = document.getElementById('btn-pause');
+        const btnExport = document.getElementById('btn-export');
+
+        // Text-to-Speech voices matching
+        function speak(text, lang) {
+            if (!SpeechSynthesis) return;
+            SpeechSynthesis.cancel(); // Stop any ongoing speech
+            const utterance = new SpeechSynthesisUtterance(text);
+            const voices = SpeechSynthesis.getVoices();
+            const targetVoice = voices.find(v => v.lang.toLowerCase() === lang.toLowerCase()) ||
+                                voices.find(v => v.lang.toLowerCase().startsWith(lang.split('-')[0].toLowerCase()));
+            if (targetVoice) {
+                utterance.voice = targetVoice;
+            }
+            utterance.lang = lang;
+            SpeechSynthesis.speak(utterance);
+        }
+
+        // Playback of current bubble texts
+        btnVolumeA.addEventListener('click', () => speak(textA.textContent, 'zh-CN'));
+        btnVolumeB.addEventListener('click', () => speak(textB.textContent, 'pt-BR'));
+
+        // Keyboard Manual Input
+        btnKeyboardA.addEventListener('click', () => {
+            const inputText = prompt("Digite o texto em Mandarim / 输入中文文本:");
+            if (inputText) {
+                handleTextInput(inputText, 'zh-CN', 'pt-BR');
+            }
         });
+        btnKeyboardB.addEventListener('click', () => {
+            const inputText = prompt("Digite o texto em Português / Digite o texto em português:");
+            if (inputText) {
+                handleTextInput(inputText, 'pt-BR', 'zh-CN');
+            }
+        });
+
+        // Add item to historical list
+        function addHistoryItem(zhText, ptText) {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            
+            const historyItem = document.createElement('div');
+            historyItem.className = 'flex flex-col gap-2 transition-all duration-300';
+            historyItem.innerHTML = `
+                <div class="flex items-center gap-2">
+                    <span class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-xs font-bold text-on-secondary-container">ZH</span>
+                    <span class="font-label-caps text-[12px] text-on-surface-variant">${timeStr}</span>
+                </div>
+                <div class="bg-surface p-3 rounded-lg border border-outline-variant/20">
+                    <p class="text-[14px] text-on-surface">${zhText}</p>
+                </div>
+                <span class="material-symbols-outlined text-outline text-center text-sm">south</span>
+                <div class="bg-primary-fixed p-3 rounded-lg border border-outline-variant/20">
+                    <p class="text-[14px] text-on-primary-fixed">${ptText}</p>
+                </div>
+            `;
+            historyList.prepend(historyItem);
+        }
+
+        // Call MyMemory translation API
+        async function translateText(text, fromLang, toLang) {
+            try {
+                const response = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${fromLang}|${toLang}`);
+                const data = await response.json();
+                if (data && data.responseData && data.responseData.translatedText) {
+                    return data.responseData.translatedText;
+                }
+            } catch (error) {
+                console.error("Erro na tradução:", error);
+            }
+            return "[Erro de tradução]";
+        }
+
+        async function handleTextInput(originalText, fromLang, toLang) {
+            if (fromLang === 'zh-CN') {
+                textA.textContent = originalText;
+                textB.textContent = "Traduzindo...";
+                const translated = await translateText(originalText, 'zh', 'pt');
+                textB.textContent = translated;
+                addHistoryItem(originalText, translated);
+                speak(translated, 'pt-BR');
+            } else {
+                textB.textContent = originalText;
+                textA.textContent = "Traduzindo...";
+                const translated = await translateText(originalText, 'pt', 'zh');
+                textA.textContent = translated;
+                addHistoryItem(translated, originalText);
+                speak(translated, 'zh-CN');
+            }
+        }
+
+        // Recognition Setup
+        function startListening(speaker) {
+            if (!SpeechRecognition) {
+                alert("Speech Recognition não é suportado neste navegador. Use o Chrome ou Safari.");
+                return;
+            }
+
+            stopAllListening();
+
+            const recognition = new SpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = true;
+            recognition.lang = speaker === 'a' ? 'zh-CN' : 'pt-BR';
+
+            activeRecognition = recognition;
+
+            if (speaker === 'a') {
+                isListeningA = true;
+                pulseA.classList.remove('hidden');
+                waveformA.classList.remove('invisible');
+                labelMicA.textContent = "Ouvindo... Fale agora";
+                micBtnA.classList.add('scale-95', 'opacity-90');
+            } else {
+                isListeningB = true;
+                pulseB.classList.remove('hidden');
+                waveformB.classList.remove('invisible');
+                labelMicB.textContent = "Ouvindo... Fale agora";
+                micBtnB.classList.add('scale-95', 'opacity-90');
+            }
+
+            recognition.onresult = (event) => {
+                let interimTranscript = '';
+                let finalTranscript = '';
+
+                for (let i = event.resultIndex; i < event.results.length; ++i) {
+                    if (event.results[i].isFinal) {
+                        finalTranscript += event.results[i][0].transcript;
+                    } else {
+                        interimTranscript += event.results[i][0].transcript;
+                    }
+                }
+
+                if (speaker === 'a') {
+                    textA.textContent = finalTranscript || interimTranscript || textA.textContent;
+                } else {
+                    textB.textContent = finalTranscript || interimTranscript || textB.textContent;
+                }
+            };
+
+            recognition.onerror = (event) => {
+                console.error("Speech recognition error", event.error);
+                stopAllListening();
+            };
+
+            recognition.onend = async () => {
+                const finishedSpeaker = speaker;
+                stopAllListening();
+
+                const recordedText = finishedSpeaker === 'a' ? textA.textContent : textB.textContent;
+                if (recordedText && recordedText !== "Traduzindo..." && recordedText !== "Olá! Como posso ajudar você hoje?" && recordedText !== "您好！今天我能为您做什么吗？") {
+                    if (finishedSpeaker === 'a') {
+                        await handleTextInput(recordedText, 'zh-CN', 'pt-BR');
+                    } else {
+                        await handleTextInput(recordedText, 'pt-BR', 'zh-CN');
+                    }
+                }
+            };
+
+            recognition.start();
+        }
+
+        function stopAllListening() {
+            if (activeRecognition) {
+                try {
+                    activeRecognition.stop();
+                } catch (e) {}
+                activeRecognition = null;
+            }
+
+            isListeningA = false;
+            isListeningB = false;
+
+            pulseA.classList.add('hidden');
+            pulseB.classList.add('hidden');
+            waveformA.classList.add('invisible');
+            waveformB.classList.add('invisible');
+            labelMicA.textContent = "Toque para Falar (ZH-CN)";
+            labelMicB.textContent = "Toque para Falar (PT-BR)";
+            micBtnA.classList.remove('scale-95', 'opacity-90');
+            micBtnB.classList.remove('scale-95', 'opacity-90');
+        }
+
+        micBtnA.addEventListener('click', () => {
+            if (isListeningA) {
+                stopAllListening();
+            } else {
+                startListening('a');
+            }
+        });
+
+        micBtnB.addEventListener('click', () => {
+            if (isListeningB) {
+                stopAllListening();
+            } else {
+                startListening('b');
+            }
+        });
+
+        // Stop button
+        btnPause.addEventListener('click', () => {
+            stopAllListening();
+            if (SpeechSynthesis) {
+                SpeechSynthesis.cancel();
+            }
+        });
+
+        // Clear button
+        btnClear.addEventListener('click', () => {
+            stopAllListening();
+            textA.textContent = "您好！今天我能为您做什么吗？";
+            textB.textContent = "Olá! Como posso ajudar você hoje?";
+            historyList.innerHTML = '';
+        });
+
+        // Export history to text file
+        btnExport.addEventListener('click', () => {
+            let historyText = "--- Stitch Tabletop Translator Transcript ---\n\n";
+            const items = historyList.children;
+            if (items.length === 0) {
+                alert("Nenhum histórico para exportar!");
+                return;
+            }
+            for (let i = items.length - 1; i >= 0; i--) {
+                const item = items[i];
+                const paragraphs = item.querySelectorAll('p');
+                const timeSpan = item.querySelector('.font-label-caps');
+                const time = timeSpan ? timeSpan.textContent : "Início";
+                if (paragraphs.length >= 2) {
+                    historyText += `[${time}] Cidadão (ZH): ${paragraphs[0].textContent}\n`;
+                    historyText += `[${time}] Servidor (PT): ${paragraphs[1].textContent}\n\n`;
+                }
+            }
+
+            const blob = new Blob([historyText], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `stitch_transcript_${new Date().toISOString().slice(0,10)}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+
+        // Load voices once at start
+        if (SpeechSynthesis) {
+            SpeechSynthesis.getVoices();
+            if (SpeechSynthesis.onvoiceschanged !== undefined) {
+                SpeechSynthesis.onvoiceschanged = SpeechSynthesis.getVoices;
+            }
+        }
     </script>
 </body></html>
